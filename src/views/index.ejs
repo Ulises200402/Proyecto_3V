@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Viajes en Bus - Larga Distancia</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>3Vagos</h1>
+            <p>Confort y seguridad a larga distancia</p>
+        </div>
+        <nav>
+            <ul>
+                <button class="menu" href="#">Inicio</button>
+                <button class="menu" href="#">Destinos</button>
+                <button class="menu" href="#">Ofertas</button>
+                <button class="menu" href="#">Contacto</button>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="search">
+        <h2>Encuentra tu próximo viaje</h2>
+        <form action="#" method="POST">
+            <input class="form-group" type="text" name="origen" placeholder="Ciudad de origen">
+            <input class="form-group" type="text" name="destino" placeholder="Ciudad de destino">
+            <input class="form-group" type="date" id="input" name="fecha">
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section class="offers">
+        <h2>Ofertas destacadas</h2>
+        <% const offers = [
+            { route: 'Buenos Aires - Córdoba', price: '???' },
+            { route: 'Mendoza - Salta', price: '???' },
+            { route: 'Rosario - Bariloche', price: '???' }
+        ]; %>
+        <% offers.forEach(offer => { %>
+            <div class="offer-card">
+                <h3><%= offer.route %></h3>
+                <p>Precio: $<%= offer.price %></p>
+                <button>Comprar</button>
+            </div>
+        <% }); %>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Viajes en Bus. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="login-circle" aria-label="Iniciar sesión" title="Iniciar sesión"></div>
+    <script>
+        document.querySelector('.login-circle').addEventListener('click', function() {
+            window.location.href = '/login';
+        });
+    </script>
+</body>
+</html>
