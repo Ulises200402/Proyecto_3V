@@ -1,46 +1,63 @@
 import { pool } from "../db.js";
+import { isAuthenticated } from '../router/Middleware/authMiddleware.js'; // Importa el middleware
 
-//login
 export const authLogin = async (req, res) => {
-    console.log('El login funciona')
-    const { Gmail,username, password } = req.body;
-    console.log(username, password)
+    const { Gmail, username, password } = req.body;
+    console.log(Gmail, username, password); // Para depuración
 
     try {
-        // Consulta a la base de datos para verificar las credenciales
-        const [users] = await pool.query('SELECT * FROM users WHERE Gmail = ? AND username = ? AND password = ?', [Gmail, username, password]);
+        const [users] = await pool.query(
+            'SELECT * FROM user WHERE Gmail = ? AND username = ? AND password = ?',
+            [Gmail, username, password]
+        );
 
         if (users.length > 0) {
-            // Si el usuario existe y las credenciales son correctas
-            console.log('Login successful!');
-            res.redirect("/customer");
+            req.session.user = users[0];
+            return res.redirect("/customers");
         } else {
-            // Si no coinciden las credenciales
-            console.log('Invalid credentials');
-            res.redirect("login");
+            req.session.message = "Credenciales inválidas";
+            return res.redirect("/login");
         }
     } catch (error) {
-        console.error('Error during login:', error);
+        console.error('Error durante el login:', error);
+        req.session.message = "Error en el servidor";
+        return res.redirect("/login");
     }
-}
+};
 
-//register
 export const registerUser = async (req, res) => {
-    console.log('El register funciona')
-    const { username, password, confirmPassword } = req.body;
+    console.log('El register funciona');
+    const { Gmail, username, password, confirmPassword } = req.body;
 
     // Validar si las contraseñas coinciden
     if (password !== confirmPassword) {
-        return res.status(400).json({ message: "Las contraseñas no coinciden." });
+        req.session.message = "Las contraseñas no coinciden."; // Establece el mensaje de error en la sesión
+        return res.redirect('/register'); // Redirige al formulario de registro
     }
 
     try {
+        // Verificar si el Gmail ya existe
+        const [existingGmail] = await pool.query('SELECT * FROM user WHERE Gmail = ?', [Gmail]);
+        if (existingGmail.length > 0) {
+            req.session.message = "Ese Gmail ya está en uso."; // Mensaje de error si el Gmail ya existe
+            return res.redirect('/register'); // Redirige al formulario de registro
+        }
+
+        // Verificar si el nombre de usuario ya existe
+        const [existingUser] = await pool.query('SELECT * FROM user WHERE username = ?', [username]);
+        if (existingUser.length > 0) {
+            req.session.message = "El nombre de usuario ya existe."; // Mensaje de error si el nombre de usuario ya existe
+            return res.redirect('/register'); // Redirige al formulario de registro
+        }
+
         // Guardar el usuario en la base de datos
-        const [rows] = await pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, password]);
+        await pool.query('INSERT INTO user (Gmail, username, password) VALUES (?, ?, ?)', [Gmail, username, password]);
+
         // Responder con éxito
         return res.redirect('/customers');
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Error al registrar el usuario." });
+        req.session.message = "Error al registrar el usuario."; // Mensaje de error genérico
+        return res.redirect('/register'); // Redirige al formulario de registro
     }
 };

@@ -17,20 +17,15 @@
             <ul>
                 <button class="menu" href="#">Inicio</button>
                 <button class="menu" href="#">Destinos</button>
-                <button class="menu" href="#">Ofertas</button>
+                <button class="menu" href="#">Informacion</button>
                 <button class="menu" href="#">Contacto</button>
             </ul>
         </nav>
     </header>
 
     <section class="search">
-        <h2>Encuentra tu próximo viaje</h2>
-        <form action="#" method="POST">
-            <input class="form-group" type="text" name="origen" placeholder="Ciudad de origen">
-            <input class="form-group" type="text" name="destino" placeholder="Ciudad de destino">
-            <input class="form-group" type="date" id="input" name="fecha">
-            <button type="submit">Buscar</button>
-        </form>
+        <h2>¡Haz realidad tus proximas vacaciones!</h2>
+        <button class="button-reserva" >Reserva tu proximo viaje</button>
     </section>
 
     <section class="offers">
@@ -57,6 +52,9 @@
     <script>
         document.querySelector('.login-circle').addEventListener('click', function() {
             window.location.href = '/login';
+        });
+        document.querySelector('.button-reserva').addEventListener('click', function() {
+            window.location.href = '/customers';
         });
     </script>
 </body>

@@ -4,6 +4,9 @@
   <div class="row">
     <div class="col-md-5 offset-md-3 card bg-dark">
       <div class="card-body">
+        <% if (message) { %>
+          <div class="alert alert-danger"><%= message %></div>
+        <% } %>
         <form action="/login" method="POST">
           <input
             type="text"
@@ -16,22 +19,21 @@
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="username"
             class="form-control mb-3"
             required
-            autofocus
           />
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="password"
             class="form-control mb-3"
             required
           />
           <button type="submit" class="btn btn-primary">Login</button>
         </form>
         <div class="mt-3">
-          <a href="/register" class="text-light">No tienes una cuenta? Registrate aqui!!!</a>
+          <a href="/register" class="text-light">No tienes una cuenta? Regístrate aquí!!!</a>
         </div>
       </div>
     </div>

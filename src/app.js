@@ -1,4 +1,5 @@
 import express from "express";
+import session from 'express-session';
 import dotenv from "dotenv";
 import morgan from "morgan";
 import { fileURLToPath } from "url";
@@ -11,6 +12,21 @@ import customerRouter from "./router/customer.routes.js";
 import authRouter from "./router/auth.routes.js";
 
 const app = express()
+
+// Configuración de la sesión
+app.use(session({
+    secret: 'Ulielpiola69', // Cambia esto a una clave secreta segura
+    resave: false,
+    saveUninitialized: true,
+     // Cambia a `true` si usas HTTPS
+}));
+
+// Middleware para parsear JSON
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Importa las rutas
+app.use(authRouter);
 
 //cargar las variables de entorno
 dotenv.config();
@@ -26,7 +42,6 @@ app.set('views', join(__dirname, 'views'))
 
 //middlerware
 app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }))
 
 // static files
 app.use(express.static(join(__dirname, "public")));
