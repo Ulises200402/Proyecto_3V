@@ -1,29 +1,57 @@
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="./index.css">
+    <title>Tu Página</title>
+    <link rel="stylesheet" href="./src/public/styles/index.css">
 </head>
 <body>
-    <header class="header">
-    <div class="container">
-        <a href="#" class="logo">LOGO</a>
-        <nav class="navigation">
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            <h1>Mi Sitio Web</h1>
+        </div>
+        <nav>
             <ul>
-                <li><a href="#">destino</a></li>
-                <li><a href="#">informacion</a></li>
-                <li><a href="#">contactos</a></li>
+                <li><a href="#" class="menu">Inicio</a></li>
+                <li><a href="#" class="menu">Nosotros</a></li>
+                <li><a href="#" class="menu">Servicios</a></li>
+                <li><a href="#" class="menu">Contacto</a></li>
             </ul>
         </nav>
-    </div>
     </header>
-    <main class="main">
-        <div class="container">
-            <h1> Bienvenidos</h1>
-            
+
+    <!-- Sección de búsqueda -->
+    <section class="search">
+        <h2>Buscar</h2>
+        <div class="form-group">
+            <label for="search-input">¿Qué estás buscando?</label>
+            <input type="text" id="search-input" placeholder="Escribe algo...">
         </div>
-    </main>
-    
+        <button>Buscar</button>
+    </section>
+
+    <!-- Sección de ofertas -->
+    <section class="offers">
+        <h2>Ofertas</h2>
+        <div class="offer-card">
+            <h3>Oferta 1</h3>
+            <p>Descripción de la oferta 1</p>
+            <button class="button-reserva">Reservar</button>
+        </div>
+        <div class="offer-card">
+            <h3>Oferta 2</h3>
+            <p>Descripción de la oferta 2</p>
+            <button class="button-reserva">Reservar</button>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2023 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Botón de inicio de sesión -->
+    <div class="login-circle"></div>
 </body>
 </html>
