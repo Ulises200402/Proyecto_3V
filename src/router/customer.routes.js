@@ -8,10 +8,12 @@ const router = Router();
 //CRUD
 router.get("/customers",isAuthenticated, renderCustomers);
 router.post("/add", createCustomers);
-router.get("/delete/:id", deleteCustomer);
-router.get("/update/:id", editCustomer);
+// Ruta para eliminar una reserva
+router.post("/delete/:id", deleteCustomer);
+// Ruta para editar una reserva
+router.get("/edit/:id", editCustomer);
 router.post("/update/:id", updateCustomer);
 router.post("/misreservas", misreservas );
-router.get('/precio/:destinoId', obtenerPrecio);
+router.get("/precio/:destinoId", obtenerPrecio);
 
 export default router
