@@ -12,6 +12,8 @@ export const authLogin = async (req, res) => {
         );
 
         if (users.length > 0) {
+            req.session.userid = users[0].iduser;
+            console.log(req.session.userid)
             req.session.user = users[0];
             return res.redirect("/customers");
         } else {
@@ -54,7 +56,8 @@ export const registerUser = async (req, res) => {
         await pool.query('INSERT INTO user (Gmail, username, password) VALUES (?, ?, ?)', [Gmail, username, password]);
 
         // Responder con éxito
-        return res.redirect('/customers');
+        req.session.message = "Se ah registrado con exito."
+        return res.redirect('/login');
     } catch (error) {
         console.error(error);
         req.session.message = "Error al registrar el usuario."; // Mensaje de error genérico

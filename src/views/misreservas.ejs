@@ -1,0 +1,35 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <h2>Mis reservas</h2>
+  <table>
+    <thead>
+      <tr>
+        <td>N°</td>
+        <td>Nombre</td>
+        <td>Destino</td>
+        <td>Fecha de ida</td>
+        <td>Fecha de vuelta</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(customer && customer.length > 0) { %>
+        <% customer.forEach((customer, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= customer.nombre %></td>
+            <td><%= customer.lugarDestino %></td>
+            <td><%= customer.fechaida %></td>
+            <td><%= customer.fechavuelta %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="5">No tienes reservas aún.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("partials/_footer") %>

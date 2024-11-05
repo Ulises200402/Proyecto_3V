@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <title>3Vagos</title>
     <!-- NAVIGATION -->
-    <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/index.css" />
   </head>
   <body>
-    <!-- navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/index">3Vagos</a>
-      </div>
-    </nav>
-  </body>
-</html>
+    <header>
+        <div>
+          <h1 class="logo">3Vagos</h1>
+          <p>Confort y seguridad a larga distancia</p>
+        </div>
+    </header>
+    <script>
+      document.querySelector('.logo').addEventListener('click', function() {
+          window.location.href = '/index';
+      });
+  </script>
+

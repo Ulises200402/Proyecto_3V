@@ -9,8 +9,8 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>3Vagos</h1>
+        <div>
+            <h1 class="logo">3Vagos</h1>
             <p>Confort y seguridad a larga distancia</p>
         </div>
         <nav>
@@ -31,9 +31,9 @@
     <section class="offers">
         <h2>Ofertas destacadas</h2>
         <% const offers = [
-            { route: 'Buenos Aires - Córdoba', price: '???' },
+            { route: 'Mendoza - Córdoba', price: '???' },
             { route: 'Mendoza - Salta', price: '???' },
-            { route: 'Rosario - Bariloche', price: '???' }
+            { route: 'Mendoza - Bariloche', price: '???' }
         ]; %>
         <% offers.forEach(offer => { %>
             <div class="offer-card">
@@ -45,13 +45,13 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Viajes en Bus. Todos los derechos reservados.</p>
+        <p>&copy; 2024 3Vagos. Todos los derechos reservados.</p>
     </footer>
 
     <div class="login-circle" aria-label="Iniciar sesión" title="Iniciar sesión"></div>
     <script>
         document.querySelector('.login-circle').addEventListener('click', function() {
-            window.location.href = '/login';
+            window.location.href = '/misreservas';
         });
         document.querySelector('.button-reserva').addEventListener('click', function() {
             window.location.href = '/customers';

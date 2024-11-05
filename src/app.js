@@ -25,9 +25,6 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Importa las rutas
-app.use(authRouter);
-
 //cargar las variables de entorno
 dotenv.config();
 
