@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="./src/public/styles/login.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html" class="menu">Inicio</a></li>
+                <li><a href="./nosotros.html" class="menu">Nosotros</a></li>
+                <li><a href="./servicios.html" class="menu">Servicios</a></li>
+                <li><a href="./contacto.html" class="menu">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de inicio de sesión -->
+    <section class="login">
+        <h2>Iniciar Sesión</h2>
+        <form action="login_process.php" method="POST">
+            <div class="form-group">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Ingresar</button>
+        </form>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2023 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
