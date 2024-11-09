@@ -15,17 +15,23 @@ export const renderCustomers = async(req, res) => {
   }
 }
 
-export const misreservas = async(req, res) => {
-   const idUser = req.session.userId; // Asegúrate de que el id del usuario esté en la sesión
+export const misreservas = async (req, res) => {
+    // Asegúrate de acceder al iduser dentro del objeto user
+    const idUser = req.session.user?.iduser; // Usa el operador de encadenamiento opcional (?.) para mayor seguridad
+    console.log("ID del usuario en la sesión:", idUser);
 
-   try {
-       const [reservas] = await pool.query('SELECT * FROM reservas WHERE idUser = ?', [idUser]);
-       res.render('misreservas', { reservas });
-   } catch (error) {
-       console.error('Error al obtener las reservas:', error);
-       res.status(500).send('Error al cargar las reservas');
-   }
-}
+    if (!idUser) {
+        return res.status(401).send("Usuario no autenticado");
+    }
+
+    try {
+        const [reservas] = await pool.query('SELECT * FROM reservas WHERE idUser = ?', [idUser]);
+        res.render('misreservas', { reservas });
+    } catch (error) {
+        console.error('Error al obtener las reservas:', error);
+        res.status(500).send('Error al cargar las reservas');
+    }
+};
 
 export const createCustomers = async (req, res) => {
    const { nombre, lugar, fechaida, fechavuelta } = req.body;

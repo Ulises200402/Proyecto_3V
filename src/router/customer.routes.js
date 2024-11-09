@@ -13,7 +13,6 @@ router.post("/delete/:id", deleteCustomer);
 // Ruta para editar una reserva
 router.get("/edit/:id", editCustomer);
 router.post("/update/:id", updateCustomer);
-router.post("/misreservas", misreservas );
-router.get("/precio/:destinoId", obtenerPrecio);
+router.get('/misreservas',isAuthenticated, misreservas);
 
 export default router

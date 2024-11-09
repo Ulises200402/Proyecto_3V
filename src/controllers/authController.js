@@ -1,21 +1,18 @@
 import { pool } from "../db.js";
-import { isAuthenticated } from '../router/Middleware/authMiddleware.js'; // Importa el middleware
+
 
 export const authLogin = async (req, res) => {
     const { Gmail, username, password } = req.body;
     console.log(Gmail, username, password); // Para depuración
 
     try {
-        const [users] = await pool.query(
-            'SELECT * FROM user WHERE Gmail = ? AND username = ? AND password = ?',
-            [Gmail, username, password]
-        );
+        const [users] = await pool.query('SELECT * FROM user WHERE Gmail = ? AND username = ? AND password = ?',[Gmail, username, password]);
 
         if (users.length > 0) {
             req.session.userid = users[0].iduser;
             console.log(req.session.userid)
             req.session.user = users[0];
-            return res.redirect("/customers");
+            return res.redirect("/index");
         } else {
             req.session.message = "Credenciales inválidas";
             return res.redirect("/login");
