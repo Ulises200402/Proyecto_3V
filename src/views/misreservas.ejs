@@ -19,12 +19,12 @@
             <td><%= (i + 1) %></td>
             <td><%= reserva.nombre %></td>
             <td><%= reserva.destino %></td>
-            <td><%= reserva.fechaida %></td>
-            <td><%= reserva.fechavuelta %></td>
+            <td><%= reserva['Fecha de Ida'] %></td> <!-- Mostrar fecha formateada -->
+            <td><%= reserva['Fecha de Vuelta'] %></td> <!-- Mostrar fecha formateada -->
             <td class="d-flex gap-2">
-              <a href="/edit/<%= reserva.idReservas %>" class="btn btn-primary">Editar</a>
+              <a href="/edit/<%= reserva.idReservas %>" class="btn-btn-primary">Editar</a>
               <form action="/delete/<%= reserva.idReservas %>" method="POST">
-                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <button type="submit" class="btn-btn-danger">Eliminar</button>
               </form>
             </td>
           </tr>

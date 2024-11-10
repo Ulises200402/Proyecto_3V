@@ -11,7 +11,18 @@ header {
   background-color: #007bff;
   color: white;
   padding: 20px;
-  text-align: center;
+  display: flex;
+  gap: 80px;
+}
+header div{
+  display: flex; 
+  gap: 15px;
+  text-align: left;
+}
+
+header .logoimg {
+  justify-content: flex-start;
+  height: 100px;
 }
 
 header .logo{
@@ -21,6 +32,7 @@ header .logo{
 }
 
 header nav ul {
+  text-align: right;
   list-style: none;
   padding: 0;
   text-decoration: none;
@@ -171,10 +183,44 @@ header nav ul li {
   background-color: #0056b3;
 }
 
-tbody {
-  border: 3px solid;
-  margin: 10px;
+/* Estilo de la tabla en Mis Reservas */
+div table {
+  width: 80%; 
+  max-width: 900px; 
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border: 2px solid #b3c9f1; 
+  color: #000000; 
+  font-family: 'Arial', sans-serif; 
+  margin: 20px auto; 
+  box-shadow: 0 4px 8px rgba(154, 189, 255, 0.1); 
 }
+
+div table th, div table td {
+  padding: 8px 12px; /* Relleno de celdas más pequeño para una tabla compacta */
+  text-align: left; /* Alineación del texto a la izquierda */
+  border: 1px solid #ddd; /* Bordes visibles entre las celdas */
+}
+
+div table th {
+  background-color: #7EA8F8; /* Fondo azul para los encabezados */
+  color: #ffffff; /* Texto blanco en los encabezados */
+  font-weight: bold; /* Negrita para los encabezados */
+  text-transform: uppercase; /* Transformación de texto a mayúsculas */
+}
+
+div table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Fondo gris claro para filas pares */
+}
+
+div table tr:hover {
+  background-color: #e0f7fa; /* Fondo ligeramente azul cuando pasa el ratón por encima */
+}
+
+div table td {
+  border-top: 1px solid #ddd; /* Bordes delgados entre las celdas */
+}
+
 
 .form-control-mb-3{
   border: 2px solid transparent;
@@ -220,7 +266,6 @@ tbody {
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  display: grid;
   grid-template-rows: repeat(3, auto); 
   justify-items: center; 
   margin: auto;

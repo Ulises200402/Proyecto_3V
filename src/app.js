@@ -47,6 +47,9 @@ app.use(express.static(join(__dirname, "public")));
 app.use(customerRouter);
 app.use(authRouter);
 
+app.get('/', (req, res) => {
+    res.render('index'); // Asegúrate de que exista un archivo "index.ejs" en la carpeta "views"
+  });
 
 // Servidor
 app.listen(app.get('port'), () => {
