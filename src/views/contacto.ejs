@@ -1,0 +1,27 @@
+<%- include("partials/_header") %>
+<link rel="stylesheet" href="/styles/contacto.css">
+    <main>
+        <section class="informacion-contacto">
+            <h2>Información de Contacto</h2>
+            <p>Dirección: Calle 123, Mendoza, Argentina</p>
+            <p>Teléfono: 2612065312</p>
+            <p>Correo electrónico: 3Vagos@Gmail.com</p>
+        </section>
+        <section class="mapa">
+            <h2>Ubicación</h2>
+            <div id="mapa"></div>
+        </section>
+    </main>
+    <script>
+        // Agregar mapa de Google Maps
+        const mapa = new google.maps.Map(document.getElementById('mapa'), {
+        center: { lat: 37.7749, lng: -122.4194 },
+        zoom: 13,
+        });
+
+        // Inicializar mapa
+        google.maps.event.addDomListener(window, 'load', initMap);
+
+    </script>
+
+<%- include("partials/_footer") %>

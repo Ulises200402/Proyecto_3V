@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { renderCustomers, createCustomers, deleteCustomer, editCustomer, updateCustomer, misreservas} from "../controllers/customerController.js";
+import { renderCustomers, createCustomers, deleteCustomer, editCustomer, updateCustomer, misreservas, generarTicket} from "../controllers/customerController.js";
 import { obtenerPrecio } from "../controllers/priceController.js";
 import { isAuthenticated } from './Middleware/authMiddleware.js';
 const router = Router();
@@ -14,5 +14,7 @@ router.post("/delete/:id", deleteCustomer);
 router.get("/edit/:id", editCustomer);
 router.post("/update/:id", updateCustomer);
 router.get('/misreservas',isAuthenticated, misreservas);
+router.get('/download-ticket/:idReservas', generarTicket);
+router.get('/contacto');
 
 export default router

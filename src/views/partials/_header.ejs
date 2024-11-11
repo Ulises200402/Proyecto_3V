@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>3Vagos</title>
-    <!-- NAVIGATION -->
-    <link rel="stylesheet" href="/styles/index.css" />
-  </head>
-  <body>
-    <header>
-        <div>
-          <img class="logoimg" src="/styles/img/logo.png" alt="logo">
-          <h1 class="logo">3Vagos</h1>
-          <p>Confort y seguridad a larga distancia</p>
-        </div>
-    </header>
-    <script>
-      document.querySelector('.logo').addEventListener('click', function() {
-          window.location.href = '/index';
-      });
-      document.querySelector('.logoimg').addEventListener('click', function() {
-        window.location.href = '/index';
-      });
-  </script>
 
+<head>
+  <meta charset="UTF-8" />
+  <title>3Vagos</title>
+  <!-- NAVIGATION -->
+  <link rel="stylesheet" href="/styles/index.css" />
+</head>
+
+<body>
+  <header>
+    <div>
+      <img class="logoimg" src="/styles/img/logo.png" alt="logo">
+      <h1 class="logo">3Vagos</h1>
+      <p>Confort y seguridad a larga distancia</p>
+    </div>
+    <nav>
+      <ul>
+        <button class="menu" id="inicio">Inicio</button>
+        <button class="menu" id="informacion">Informacion</button>
+        <button class="menu" id="contacto">Contacto</button>
+      </ul>
+    </nav>
+  </header>
+  <script>
+    document.querySelector('.logo').addEventListener('click', function () {
+      window.location.href = '/index';
+    });
+    document.querySelector('.logoimg').addEventListener('click', function () {
+      window.location.href = '/index';
+    });
+    document.getElementById('contacto').addEventListener('click', function () {
+      window.location.href = '/contacto';
+    });
+    document.getElementById('informacion').addEventListener('click', function () {
+      window.location.href = '/contacto';
+    });
+    document.getElementById('inicio').addEventListener('click', function () {
+      window.location.href = '/index';
+    });
+  </script>

@@ -16,10 +16,9 @@
         </div>
         <nav>
             <ul>
-                <button class="menu" href="#">Inicio</button>
-                <button class="menu" href="#">Destinos</button>
-                <button class="menu" href="#">Informacion</button>
-                <button class="menu" href="#">Contacto</button>
+                <button class="menu" id="inicio">Inicio</button>
+                <button class="menu" id="informacion">Informacion</button>
+                <button class="menu" id="contacto">Contacto</button>
             </ul>
         </nav>
     </header>
@@ -56,6 +55,15 @@
         });
         document.querySelector('.button-reserva').addEventListener('click', function() {
             window.location.href = '/customers';
+        });
+        document.getElementById('contacto').addEventListener('click', function() {
+          window.location.href = '/contacto';
+        });
+        document.getElementById('informacion').addEventListener('click', function() {
+          window.location.href = '/contacto';
+        });
+        document.getElementById('inicio').addEventListener('click', function() {
+          window.location.href = '/index';
         });
     </script>
 </body>

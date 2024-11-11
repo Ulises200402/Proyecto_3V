@@ -10,6 +10,10 @@ router.get('/index', (req, res) => {
     res.render('index'); // `locations` es el nombre del archivo .ejs sin la extensión
 });
 
+router.get('/contacto', (req, res) => {
+    res.render('contacto'); 
+});
+
 export default router
 
 router.get('/login', (req, res) => {

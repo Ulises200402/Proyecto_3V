@@ -9,6 +9,7 @@
         <td>Destino</td>
         <td>Fecha de ida</td>
         <td>Fecha de vuelta</td>
+        <td>Precio</td> 
         <td>Acción</td>
       </tr>
     </thead>
@@ -21,17 +22,19 @@
             <td><%= reserva.destino %></td>
             <td><%= reserva['Fecha de Ida'] %></td> <!-- Mostrar fecha formateada -->
             <td><%= reserva['Fecha de Vuelta'] %></td> <!-- Mostrar fecha formateada -->
+            <td>$<%= reserva.precio %></td> <!-- Mostrar precio -->
             <td class="d-flex gap-2">
               <a href="/edit/<%= reserva.idReservas %>" class="btn-btn-primary">Editar</a>
               <form action="/delete/<%= reserva.idReservas %>" method="POST">
                 <button type="submit" class="btn-btn-danger">Eliminar</button>
               </form>
+              <a href="/download-ticket/<%= reserva.idReservas %>" class="btn-btn-primary">Descargar Boleto</a>
             </td>
           </tr>
         <% }); %>
       <% } else { %>
         <tr>
-          <td colspan="6">No hay reservas disponibles.</td>
+          <td colspan="7">No hay reservas disponibles.</td> <!-- Ajustar para la nueva columna -->
         </tr>
       <% } %>
     </tbody>
