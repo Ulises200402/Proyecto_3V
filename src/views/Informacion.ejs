@@ -1,0 +1,65 @@
+<%- include("partials/_header") %>
+  <main>
+    <div class="slider-container">
+      <section class="slider">
+        <div class="slides">
+          <div class="slide">
+            <img src="/styles/img/BuenosAires.jpg" alt="Paisaje 1">
+            <div class="description">Viaja por la capital de Argentina.</div>
+          </div>
+          <div class="slide">
+            <img src="/styles/img/Mendoza.jpg" alt="Paisaje 2">
+            <div class="description">Disfruta de las montañas mendocinas en su máximo esplendor.</div>
+          </div>
+          <div class="slide">
+            <img src="/styles/img/Salta.jpg" alt="Paisaje 3">
+            <div class="description">Recorre los grandes paisajes y disfruta de la gran cultura.</div>
+          </div>
+        </div>
+    </div>
+    </section>
+    <section class="empresa-info">
+      <h1>Sobre Nosotros</h1>
+      <div class="tarjeta">
+        <h2>Nuestra Misión</h2>
+        <p>Brindar un servicio seguro, confortable y puntual, conectando a personas y comunidades a través de nuestra amplia red de rutas por todo el país.</p>
+      </div>
+      
+      <div class="tarjeta">
+        <h2>Nuestra Visión</h2>
+        <p>Ser líderes en el transporte de larga distancia, ofreciendo una experiencia de viaje inigualable, con innovación y responsabilidad ambiental.</p>
+      </div>
+      
+      <div class="tarjeta">
+        <h2>Valores Corporativos</h2>
+        <ul>
+          <li><strong>Seguridad:</strong> La seguridad de nuestros pasajeros y personal es nuestra prioridad número uno.</li>
+          <li><strong>Confiabilidad:</strong> Cumplimos con nuestro compromiso de ofrecer un servicio puntual y de calidad.</li>
+          <li><strong>Atención al Cliente:</strong> Nos enfocamos en ofrecer la mejor experiencia de atención, antes, durante y después del viaje.</li>
+        </ul>
+      </div>
+      
+      <div class="tarjeta">
+        <h2>Historia</h2>
+        <p>Fundada en el año 2004 en la hermosa provincia de Mendoza, nuestra empresa comenzó con un sueño: conectar las ciudades más remotas de Argentina con los principales centros urbanos. Hoy en día, contamos con una moderna flota de autobuses que recorre más de 15 provincias, ofreciendo servicios de primera clase.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+      });
+    }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    // Cambiar imagen cada 5 segundos
+    setInterval(nextSlide, 5000);
+    // Mostrar la primera imagen al cargar
+    showSlide(currentSlide);
+  </script>
+  <%- include("partials/_footer") %>

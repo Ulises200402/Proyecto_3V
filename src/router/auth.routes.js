@@ -7,11 +7,15 @@ import { isAuthenticated } from './Middleware/authMiddleware.js';
 const router = Router();
 
 router.get('/index', (req, res) => {
-    res.render('index'); // `locations` es el nombre del archivo .ejs sin la extensión
+    res.render('index'); 
 });
 
 router.get('/contacto', (req, res) => {
     res.render('contacto'); 
+});
+
+router.get('/Informacion', (req, res) => {
+    res.render('Informacion'); 
 });
 
 export default router

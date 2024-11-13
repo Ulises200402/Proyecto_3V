@@ -15,6 +15,5 @@ router.get("/edit/:id", editCustomer);
 router.post("/update/:id", updateCustomer);
 router.get('/misreservas',isAuthenticated, misreservas);
 router.get('/download-ticket/:idReservas', generarTicket);
-router.get('/contacto');
 
 export default router

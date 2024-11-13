@@ -39,38 +39,5 @@
         }
     });
   </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const fechaSalidaInput = document.getElementById("fechaSalida");
-      const fechaVueltaInput = document.getElementById("fechaVuelta");
-  
-      const fechaBase = new Date("2024-11-05");
-      setDateRestrictions(fechaSalidaInput, fechaBase, 2);
-  
-      fechaSalidaInput.addEventListener("change", () => {
-        const selectedDate = new Date(fechaSalidaInput.value);
-        const fechaMinRegreso = new Date(selectedDate);
-        fechaMinRegreso.setDate(fechaMinRegreso.getDate() + 1);
-        setDateRestrictions(fechaVueltaInput, fechaMinRegreso, 2);
-      });
-    });
-  
-    function setDateRestrictions(inputElement, baseDate, intervalDays) {
-      const today = new Date();
-      const minDate = new Date(Math.max(baseDate, today));
-      
-      const minDateString = minDate.toISOString().split("T")[0];
-      inputElement.min = minDateString;
-  
-      inputElement.addEventListener("input", (event) => {
-        const selectedDate = new Date(inputElement.value);
-        const diffDays = (selectedDate - minDate) / (1000 * 60 * 60 * 24);
-        if (diffDays % intervalDays !== 0) {
-          inputElement.setCustomValidity(`Selecciona solo fechas cada ${intervalDays} días.`);
-        } else {
-          inputElement.setCustomValidity("");
-        }
-      });
-    }
-  </script>
+
   <%- include("partials/_footer") %>
