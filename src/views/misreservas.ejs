@@ -1,44 +1,55 @@
 <%- include("partials/_header") %>
-
-<div class="col-md-7">
-  <table>
-    <thead>
-      <tr>
-        <td>N°</td>
-        <td>Nombre</td>
-        <td>Destino</td>
-        <td>Fecha de ida</td>
-        <td>Fecha de vuelta</td>
-        <td>Precio</td> 
-        <td>Acción</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% if (reservas && reservas.length > 0) { %>
-        <% reservas.forEach((reserva, i) => { %>
+  <main>
+    <div class="col-md-7">
+      <table>
+        <thead>
           <tr>
-            <td><%= (i + 1) %></td>
-            <td><%= reserva.nombre %></td>
-            <td><%= reserva.destino %></td>
-            <td><%= reserva['Fecha de Ida'] %></td> <!-- Mostrar fecha formateada -->
-            <td><%= reserva['Fecha de Vuelta'] %></td> <!-- Mostrar fecha formateada -->
-            <td>$<%= reserva.precio %></td> <!-- Mostrar precio -->
-            <td class="d-flex gap-2">
-              <a href="/edit/<%= reserva.idReservas %>" class="btn-btn-primary">Editar</a>
-              <form action="/delete/<%= reserva.idReservas %>" method="POST">
-                <button type="submit" class="btn-btn-danger">Eliminar</button>
-              </form>
-              <a href="/download-ticket/<%= reserva.idReservas %>" class="btn-btn-primary">Descargar Boleto</a>
-            </td>
+            <td>N°</td>
+            <td>Nombre</td>
+            <td>Destino</td>
+            <td>Fecha de ida</td>
+            <td>Fecha de vuelta</td>
+            <td>Precio</td>
+            <td>Acción</td>
           </tr>
-        <% }); %>
-      <% } else { %>
-        <tr>
-          <td colspan="7">No hay reservas disponibles.</td> <!-- Ajustar para la nueva columna -->
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
-</div>
-
-<%- include("partials/_footer") %>
+        </thead>
+        <tbody>
+          <% if (reservas && reservas.length> 0) { %>
+            <% reservas.forEach((reserva, i)=> { %>
+              <tr>
+                <td>
+                  <%= (i + 1) %>
+                </td>
+                <td>
+                  <%= reserva.nombre %>
+                </td>
+                <td>
+                  <%= reserva.destino %>
+                </td>
+                <td>
+                  <%= reserva['Fecha de Ida'] %>
+                </td> <!-- Mostrar fecha formateada -->
+                <td>
+                  <%= reserva['Fecha de Vuelta'] %>
+                </td> <!-- Mostrar fecha formateada -->
+                <td>$<%= reserva.precio %>
+                </td> <!-- Mostrar precio -->
+                <td class="d-flex gap-2">
+                  <a href="/edit/<%= reserva.idReservas %>" class="btn-btn-primary">Editar</a>
+                  <form action="/delete/<%= reserva.idReservas %>" method="POST">
+                    <button type="submit" class="btn-btn-danger">Eliminar</button>
+                  </form>
+                  <a href="/download-ticket/<%= reserva.idReservas %>" class="btn-btn-primary">Descargar Boleto</a>
+                </td>
+              </tr>
+              <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="7">No hay reservas disponibles.</td> <!-- Ajustar para la nueva columna -->
+                  </tr>
+                  <% } %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <%- include("partials/_footer") %>

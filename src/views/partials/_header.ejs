@@ -20,6 +20,7 @@
         <button class="menu" id="inicio">Inicio</button>
         <button class="menu" id="informacion">Informacion</button>
         <button class="menu" id="contacto">Contacto</button>
+        <button class="menu" id="misreservas">Mis Reservas</button>
       </ul>
     </nav>
   </header>
@@ -30,11 +31,14 @@
     document.querySelector('.logoimg').addEventListener('click', function () {
       window.location.href = '/index';
     });
+    document.getElementById('misreservas').addEventListener('click', function () {
+      window.location.href = '/misreservas';
+    });
     document.getElementById('contacto').addEventListener('click', function () {
       window.location.href = '/contacto';
     });
     document.getElementById('informacion').addEventListener('click', function () {
-      window.location.href = '/contacto';
+      window.location.href = '/informacion';
     });
     document.getElementById('inicio').addEventListener('click', function () {
       window.location.href = '/index';

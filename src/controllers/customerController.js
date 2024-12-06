@@ -22,7 +22,7 @@ export const renderCustomers = async (req, res) => {
 
 export const misreservas = async (req, res) => {
     try {
-        const userId = req.session.user.iduser;  // Asegúrate de que el ID del usuario esté en la sesión
+        const userId = req.session.user.iduser;  // Asegurate de que el ID del usuario esté en la sesión
 
         // Obtener las reservas del usuario autenticado, uniendo las tablas 'reservas' y 'lugares' para obtener los destinos
         const [reservas] = await pool.query(`

@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { authLogin } from "../controllers/authController.js";
-import { registerUser} from '../controllers/authController.js';
+import { registerUser, logout} from '../controllers/authController.js';
 // routes.js o tu archivo de rutas
-import { isAuthenticated } from './Middleware/authMiddleware.js';
 
 const router = Router();
 
 router.get('/index', (req, res) => {
-    res.render('index'); 
+    res.render('index', { user: req.session.user || null });
+    console.log(req.session.user)
 });
 
 router.get('/contacto', (req, res) => {
@@ -17,8 +17,6 @@ router.get('/contacto', (req, res) => {
 router.get('/Informacion', (req, res) => {
     res.render('Informacion'); 
 });
-
-export default router
 
 router.get('/login', (req, res) => {
     const message = req.session.message; // Toma el mensaje de la sesión
@@ -38,3 +36,7 @@ router.get('/register', (req, res) => {
 
 // Ruta POST para el proceso de registro
 router.post('/register', registerUser);
+
+router.get('/logout', logout);
+
+export default router

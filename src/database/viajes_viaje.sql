@@ -28,15 +28,15 @@ CREATE TABLE `viaje` (
   `idDestino` int(11) NOT NULL,
   `idMicros` int(11) NOT NULL,
   `idChoferes` int(11) NOT NULL,
-  PRIMARY KEY (`idViaje`),
-  KEY `fk_Micros_Viaje` (`idMicros`),
-  KEY `fk_Choferes_Viaje` (`idChoferes`),
+  PRIMARY KEY (`idViaje`,`idOrigen`,`idDestino`,`idMicros`,`idChoferes`),
   KEY `fk_Lugar_Origen` (`idOrigen`),
   KEY `fk_Lugar_Destino` (`idDestino`),
-  CONSTRAINT `fk_Choferes_Viaje` FOREIGN KEY (`idChoferes`) REFERENCES `choferes` (`idChoferes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `fk_Micros_Viaje_idx` (`idMicros`),
+  KEY `fk_Choferes_Viaje_idx` (`idChoferes`),
+  CONSTRAINT `fk_Choferes_Viaje` FOREIGN KEY (`idChoferes`) REFERENCES `choferes` (`idChoferes`),
   CONSTRAINT `fk_Lugar_Destino` FOREIGN KEY (`idDestino`) REFERENCES `lugares` (`idLugar`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Lugar_Origen` FOREIGN KEY (`idOrigen`) REFERENCES `lugares` (`idLugar`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Micros_Viaje` FOREIGN KEY (`idMicros`) REFERENCES `micros` (`idMicros`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Micros_Viaje` FOREIGN KEY (`idMicros`) REFERENCES `micros` (`idMicros`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-09 18:01:59
+-- Dump completed on 2024-12-06  3:21:43

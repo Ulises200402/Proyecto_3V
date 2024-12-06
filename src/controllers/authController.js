@@ -61,3 +61,22 @@ export const registerUser = async (req, res) => {
         return res.redirect('/register'); // Redirige al formulario de registro
     }
 };
+
+export const logout = async (req, res) => {
+    try {
+        // Destruir la sesión
+        req.session.destroy((err) => {
+            if (err) {
+                console.error("Error al destruir la sesión:", err);
+                req.session.message = "Error al cerrar sesión."; // Establece un mensaje de error
+                return res.redirect("/index"); // Redirige al usuario a la página principal en caso de error
+            }
+            // Redirigir al usuario a la página de inicio de sesión
+            res.redirect("/login");
+        });
+    } catch (error) {
+        console.error("Error durante el cierre de sesión:", error);
+        req.session.message = "Error en el servidor."; // Mensaje de error genérico
+        res.redirect("/index"); // Redirige al usuario en caso de error
+    }
+};
